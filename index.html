@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-
-  <!-- ✅ Mobile scaling fix -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Happy Rose Day ❤️</title>
@@ -80,10 +78,6 @@
       line-height: 1.7;
     }
 
-    .highlight {
-      font-size: 19px;
-    }
-
     /* ❤️ Floating hearts */
     .heart {
       position: absolute;
@@ -108,7 +102,6 @@
 
 <body>
 
-  <!-- 🎵 Background Music (plays after tap) -->
   <audio id="bgMusic" loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
@@ -122,10 +115,12 @@
     <button onclick="showSurprise()">Tap for surprise 💕</button>
 
     <div class="surprise" id="surprise">
-      Tiny Clue 💕<br/><br/>
-      Love needs freshness…<br/>
-      And roses love water 🌹<br/><br/>
-      👉 Go check the <span class="highlight">bathroom 🚿</span> 😘
+      Riddle Time 🧩<br/><br/>
+      I bloom where water lives,<br/>
+      Mirrors gossip,<br/>
+      And taps sing.<br/><br/>
+      If you’re smiling already…<br/>
+      You know where to look 🌹😉
     </div>
   </div>
 
@@ -134,8 +129,6 @@
 
     function showSurprise() {
       document.getElementById("surprise").style.display = "block";
-
-      // ✅ Mobile-safe audio play
       if (!started) {
         document.getElementById("bgMusic").play();
         started = true;
@@ -150,7 +143,6 @@
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.fontSize = (18 + Math.random() * 22) + "px";
       document.body.appendChild(heart);
-
       setTimeout(() => heart.remove(), 6000);
     }, 450);
   </script>
