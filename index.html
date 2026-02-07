@@ -2,37 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+
+  <!-- ✅ Mobile scaling fix -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Happy Rose Day ❤️</title>
 
   <style>
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       background: linear-gradient(135deg, #ffdde1, #ee9ca7);
       font-family: 'Segoe UI', sans-serif;
+      padding: 15px;
     }
 
     .card {
       background: white;
-      padding: 30px 25px;
+      padding: 28px 22px;
       border-radius: 20px;
       text-align: center;
-      width: 340px;
+      width: 100%;
+      max-width: 380px;
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
       z-index: 2;
     }
 
     h1 {
       color: #e6005c;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
+      font-size: 26px;
     }
 
     .rose {
-      font-size: 52px;
+      font-size: 58px;
       animation: float 2s infinite ease-in-out;
     }
 
@@ -44,18 +51,18 @@
 
     p {
       color: #444;
-      font-size: 16px;
+      font-size: 17px;
       margin-top: 10px;
     }
 
     button {
-      margin-top: 18px;
-      padding: 10px 22px;
+      margin-top: 20px;
+      padding: 12px 26px;
       border: none;
-      border-radius: 25px;
+      border-radius: 30px;
       background: #e6005c;
       color: white;
-      font-size: 15px;
+      font-size: 16px;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -66,22 +73,22 @@
 
     .surprise {
       display: none;
-      margin-top: 22px;
+      margin-top: 24px;
       color: #e6005c;
       font-weight: 600;
-      font-size: 15px;
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.7;
     }
 
     .highlight {
-      font-size: 18px;
+      font-size: 19px;
     }
 
     /* ❤️ Floating hearts */
     .heart {
       position: absolute;
       color: rgba(255, 0, 100, 0.6);
-      font-size: 20px;
+      font-size: 22px;
       animation: fall 6s linear infinite;
       top: -10%;
     }
@@ -101,7 +108,7 @@
 
 <body>
 
-  <!-- 🎵 Background Music -->
+  <!-- 🎵 Background Music (plays after tap) -->
   <audio id="bgMusic" loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
@@ -112,7 +119,7 @@
     <h1>Happy Rose Day</h1>
     <p>My Love, <strong>Ankita</strong> ❤️</p>
 
-    <button onclick="showSurprise()">Tap for surprise</button>
+    <button onclick="showSurprise()">Tap for surprise 💕</button>
 
     <div class="surprise" id="surprise">
       Tiny Clue 💕<br/><br/>
@@ -123,12 +130,16 @@
   </div>
 
   <script>
-    // Auto reveal after 3 seconds
-    setTimeout(showSurprise, 3000);
+    let started = false;
 
     function showSurprise() {
       document.getElementById("surprise").style.display = "block";
-      document.getElementById("bgMusic").play();
+
+      // ✅ Mobile-safe audio play
+      if (!started) {
+        document.getElementById("bgMusic").play();
+        started = true;
+      }
     }
 
     // ❤️ Heart rain
@@ -137,11 +148,11 @@
       heart.className = "heart";
       heart.innerHTML = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = (16 + Math.random() * 20) + "px";
+      heart.style.fontSize = (18 + Math.random() * 22) + "px";
       document.body.appendChild(heart);
 
       setTimeout(() => heart.remove(), 6000);
-    }, 400);
+    }, 450);
   </script>
 
 </body>
